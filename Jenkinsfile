@@ -23,18 +23,18 @@ pipeline {
     }
     agent any 
     stages{
-        // stage('BUILD_IMAGE') {
-        //   agent any 
-        //   steps {
-        //     script {
-        //       sh '''
-        //       COMMIT=from-commit-${GIT_COMMIT:0:7}
-        //       docker build -t ${DOCKER_HUB_ID}/${IMAGE_NAME}:${COMMIT} -f web/Dockerfile .
-        //       docker build -t ${DOCKER_HUB_ID}/${IMAGE_NAME}:${IMAGE_TAG_PRODUCTION} -f web/Dockerfile .
-        //       '''
-        //     }
-        //   }
-        // }
+        stage('BUILD_IMAGE') {
+          agent any 
+          steps {
+            script {
+              sh '''
+              COMMIT=from-commit-${GIT_COMMIT:0:7}
+              docker build -t ${DOCKER_HUB_ID}/${IMAGE_NAME}:${COMMIT} -f web/Dockerfile .
+              docker build -t ${DOCKER_HUB_ID}/${IMAGE_NAME}:${IMAGE_TAG_PRODUCTION} -f web/Dockerfile .
+              '''
+            }
+          }
+        }
         // stage('START_CONTAINER') {
         //   agent any 
         //   steps {
