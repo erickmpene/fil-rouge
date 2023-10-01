@@ -47,31 +47,31 @@ pipeline {
             }
           }
         }
-        // stage('TEST COHERENCE') {
-        //   agent any
-        //   steps {
-        //     script {
-        //       sh ''' 
-        //         COMMIT=from-commit-${GIT_COMMIT:0:7}
-        //         curl http://${NODE_NAME} | grep -q "JENKINS NOTYLUS GROUP"
-        //         expected_content=$(docker run --rm ${DOCKER_HUB_ID}/${IMAGE_NAME}:${COMMIT} cat ${PATH_COHERENCE})
-        //         actual_content=$(docker run --rm ${DOCKER_HUB_ID}/${IMAGE_NAME}:${COMMIT} curl -s http://${IP_DOCKER_JOKER}:${PORT_EXTERNE})
-        //         if [ "$actual_content" != "$expected_content" ]; then echo "Contenu incorrect"; exit 1; fi
-        //       '''
-        //     }
-        //   }
-        // }
-        // stage('TEST DISPONIBILITE') {
-        //   agent any  
-        //   steps {
-        //     script {
-        //       sh ''' 
-        //         COMMIT=from-commit-${GIT_COMMIT:0:7}
-        //         docker run --rm ${DOCKER_HUB_ID}/${IMAGE_NAME}:${COMMIT} curl -s -o /dev/null -w "%{http_code}" https://example.com
-        //       '''
-        //     }
-        //   }
-        // }
+        stage('TEST COHERENCE') {
+          agent any
+          steps {
+            script {
+              // sh ''' 
+              //   COMMIT=from-commit-${GIT_COMMIT:0:7}
+              //   curl http://${NODE_NAME} | grep -q "JENKINS NOTYLUS GROUP"
+              //   expected_content=$(docker run --rm ${DOCKER_HUB_ID}/${IMAGE_NAME}:${COMMIT} cat ${PATH_COHERENCE})
+              //   actual_content=$(docker run --rm ${DOCKER_HUB_ID}/${IMAGE_NAME}:${COMMIT} curl -s http://${IP_DOCKER_JOKER}:${PORT_EXTERNE})
+              //   if [ "$actual_content" != "$expected_content" ]; then echo "Contenu incorrect"; exit 1; fi
+              // '''
+            }
+          }
+        }
+        stage('TEST DISPONIBILITE') {
+          agent any  
+          steps {
+            script {
+              // sh ''' 
+              //   COMMIT=from-commit-${GIT_COMMIT:0:7}
+              //   docker run --rm ${DOCKER_HUB_ID}/${IMAGE_NAME}:${COMMIT} curl -s -o /dev/null -w "%{http_code}" https://example.com
+              // '''
+            }
+          }
+        }
         // stage('TEST LIEN') {
         //   agent any  
         //   steps {
