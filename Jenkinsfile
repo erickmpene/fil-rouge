@@ -4,8 +4,8 @@
 
 pipeline {
     environment {
-      IMAGE_NAME = 'xxxxx-xxxxx' // your image name
-      DOCKER_HUB_ID = 'xxxxx-xxxxxxx'  // your id on docker hub
+      IMAGE_NAME = 'ic-webapp' // your image name
+      DOCKER_HUB_ID = 'erickmpene'  // your id on docker hub
       IMAGE_TAG_PRODUCTION = 'latest'
       CONTAINER_NAME = 'webapp-container'
       PORT_EXTERNE = 80
