@@ -82,16 +82,16 @@ pipeline {
             }
           }
         }
-        // stage('TEST PERFORMANCE') {
-        //   agent any  
-        //   steps {
-        //     script {
-        //       sh ''' 
-        //          docker run --rm jordi/ab -k -c 100 -n 100000  http://${IP_DOCKER_JOKER}:${PORT_EXTERNE}/
-        //       '''
-        //     }
-        //   }
-        // }
+        stage('TEST PERFORMANCE') {
+          agent any  
+          steps {
+            script {
+              // sh ''' 
+              //    docker run --rm jordi/ab -k -c 100 -n 100000  http://${IP_DOCKER_JOKER}:${PORT_EXTERNE}/
+              // '''
+            }
+          }
+        }
         // stage('DELETE_CONTAINER') {
         //   agent any  
         //   steps {
