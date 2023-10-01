@@ -72,16 +72,16 @@ pipeline {
             }
           }
         }
-        // stage('TEST LIEN') {
-        //   agent any  
-        //   steps {
-        //     script {
-        //       sh ''' 
-        //          docker run --rm dcycle/broken-link-checker:3 http://${IP_DOCKER_JOKER}:${PORT_EXTERNE}
-        //       '''
-        //     }
-        //   }
-        // }
+        stage('TEST LIEN') {
+          agent any  
+          steps {
+            script {
+              // sh ''' 
+              //    docker run --rm dcycle/broken-link-checker:3 http://${IP_DOCKER_JOKER}:${PORT_EXTERNE}
+              // '''
+            }
+          }
+        }
         // stage('TEST PERFORMANCE') {
         //   agent any  
         //   steps {
