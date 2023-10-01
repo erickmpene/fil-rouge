@@ -92,17 +92,17 @@ pipeline {
             }
           }
         }
-        // stage('DELETE_CONTAINER') {
-        //   agent any  
-        //   steps {
-        //     script {
-        //       sh ''' 
-        //          docker stop ${CONTAINER_NAME}
-        //          docker rm ${CONTAINER_NAME}
-        //       '''
-        //     }
-        //   }
-        // }
+        stage('DELETE_CONTAINER') {
+          agent any  
+          steps {
+            script {
+              // sh ''' 
+              //    docker stop ${CONTAINER_NAME}
+              //    docker rm ${CONTAINER_NAME}
+              // '''
+            }
+          }
+        }
         // stage('RELEASE_IMAGE') {
         //   agent any  
         //   steps {
