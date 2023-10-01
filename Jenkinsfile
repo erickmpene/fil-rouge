@@ -35,18 +35,18 @@ pipeline {
             }
           }
         }
-        // stage('START_CONTAINER') {
-        //   agent any 
-        //   steps {
-        //     script {
-        //       sh ''' 
-        //         COMMIT=from-commit-${GIT_COMMIT:0:7}
-        //         docker run -d --name ${CONTAINER_NAME} -p ${PORT_EXTERNE}:${PORT_INTERNE} ${DOCKER_HUB_ID}/${IMAGE_NAME}:${COMMIT}
-        //         sleep 5
-        //       '''
-        //     }
-        //   }
-        // }
+        stage('START_CONTAINER') {
+          agent any 
+          steps {
+            script {
+              sh ''' 
+                COMMIT=from-commit-${GIT_COMMIT:0:7}
+                docker run -d --name ${CONTAINER_NAME} -p ${PORT_EXTERNE}:${PORT_INTERNE} ${DOCKER_HUB_ID}/${IMAGE_NAME}:${COMMIT}
+                sleep 5
+              '''
+            }
+          }
+        }
         // stage('TEST COHERENCE') {
         //   agent any
         //   steps {
