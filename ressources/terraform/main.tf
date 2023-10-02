@@ -36,13 +36,6 @@ module "vpc" {
 
 }
 
-# module "ebs" {
-#   source      = "./modules/ebs"
-#   az-a        = var.az-a
-#   size_ebs    = var.size_ebs
-#   prefix_name = var.prefix_name
-# }
-
 module "eip" {
   source       = "./modules/eip"
   ec2_instance_ic-webapp_pgadmin = module.ec2-web.ic-webapp_pgadmin_ec2
