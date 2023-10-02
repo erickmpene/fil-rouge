@@ -1,7 +1,5 @@
 ---
-- hosts: prod:dev
+- hosts: prod:staging
   become: true
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
   roles:
     - { role: ic-webapp}
