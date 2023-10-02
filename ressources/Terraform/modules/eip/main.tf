@@ -1,9 +1,19 @@
-resource "aws_eip" "eip-bootcamp-ec2" {
-  instance = var.ec2_instance
+resource "aws_eip" "ic_webapp_pgadmin_eip" {
+  instance = var.ec2_instance_ic-webapp_pgadmin
   provisioner "local-exec" {
-    command = "echo PUBLIC_IP: ${aws_eip.eip-bootcamp-ec2.public_ip} > ./app/ip_ec2.txt"
+    command = "echo ${aws_eip.ic_webapp_pgadmin_eip.public_ip} > ./app/ic_webapp_pgadmin_eip.txt"
   }
   tags = {
-    Name = "${var.prefix_name}-eip"
+    Name = "${var.prefix_name}-eip-ic_webapp_pgadmin"
+  }
+}
+
+resource "aws_eip" "odoo_postgres_eip" {
+  instance = var.ec2_instance_odoo_postgres_ec2
+  provisioner "local-exec" {
+    command = "echo ${aws_eip.odoo_postgres_eip.public_ip} > ./app/odoo_postgres_eip.txt"
+  }
+  tags = {
+    Name = "${var.prefix_name}-eip-odoo_postgres_eip"
   }
 }

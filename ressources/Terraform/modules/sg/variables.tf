@@ -1,7 +1,9 @@
 variable "prefix_name" {}
 variable "vpc_id" {}
-variable "http_port" {}
-variable "https_port" {}
+variable "http_port_ic-webapp" {}
+variable "http_port_pgadmin" {}
+variable "http_port_postgres" {}
+variable "http_port_odoo" {}
 variable "ingress_all_ip" {}
 variable "egress_all_ip" {}
 variable "ssh_port" {}
