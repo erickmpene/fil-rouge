@@ -1,6 +1,6 @@
 #Ici vous pouvez surcharger les variables.
 
-prefix_name     = "bootcamp"
+prefix_name     = "ic-group"
 public_ip_allow = "0.0.0.0/0"
 vpc_cidr_block  = "172.16.0.0/16"
 private_subnets = "172.16.0.0/20"
@@ -9,6 +9,7 @@ az-a            = "eu-west-3a"
 http_port       = 80
 https_port      = 443
 ssh_port        = 22
+
 ingress_all_ip  = "0.0.0.0/0"
 egress_all_ip   = "0.0.0.0/0"
 size_ebs        = 20

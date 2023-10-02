@@ -30,12 +30,12 @@ module "vpc" {
 
 }
 
-module "ebs" {
-  source      = "./modules/ebs"
-  az-a        = var.az-a
-  size_ebs    = var.size_ebs
-  prefix_name = var.prefix_name
-}
+# module "ebs" {
+#   source      = "./modules/ebs"
+#   az-a        = var.az-a
+#   size_ebs    = var.size_ebs
+#   prefix_name = var.prefix_name
+# }
 
 module "eip" {
   source       = "./modules/eip"
@@ -55,19 +55,6 @@ module "sg" {
   ssh_port       = var.ssh_port
 
 }
-# module "lb" {
-#   source             = "./modules/lb"
-#   prefix_name        = var.prefix_name
-#   public_ip_allow    = var.public_ip_allow
-#   subnets-a          = module.vpc.subnet_webservers-a
-#   subnets-b          = module.vpc.subnet_webservers-b
-#   vpc_id             = module.vpc.vpc_id
-#   lb_port            = var.lb_port
-#   instances-a        = module.ec2.webservers-a
-#   instances-b        = module.ec2.webservers-b
-#   load_balancer_type = var.load_balancer_type
-#   target_type        = var.target_type
-# }
 
 
 

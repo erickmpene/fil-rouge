@@ -26,11 +26,11 @@ resource "aws_instance" "ec2" {
   }
 }
 
-resource "aws_volume_attachment" "ebs_att" {
-  device_name = "/dev/sdh"
-  volume_id   = var.ebs
-  instance_id = aws_instance.ec2.id
-}
+# resource "aws_volume_attachment" "ebs_att" {
+#   device_name = "/dev/sdh"
+#   volume_id   = var.ebs
+#   instance_id = aws_instance.ec2.id
+# }
 
 data "aws_ami" "ubuntu-bionic-latest" {
   most_recent = true
