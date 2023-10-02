@@ -1,0 +1,13 @@
+{
+    "Servers": {
+      "1": {
+        "Name": "Odoo DATABASE",
+        "Group": "Group Odoo",
+        "Port": 5432,
+        "Username": "odoo",
+        "Host": "postgresql",
+        "SSLMode": "prefer",
+        "MaintenanceDB": "postgres" 
+      }
+    }
+  }
