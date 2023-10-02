@@ -1,4 +1,4 @@
-resource "aws_instance" "ic_webapp_pgadmin_ec2" {
+resource "aws_instance" "prod_ec2" {
   ami                         = var.ami
   instance_type               = var.instance_type
   key_name                    = var.key_name
@@ -24,6 +24,6 @@ resource "aws_instance" "ic_webapp_pgadmin_ec2" {
   }
 }
   tags = {
-    Name        = "${var.prefix_name}-ic-webapp_pgadmin-ec2"
+    Name        = "${var.prefix_name}-ec2-prod"
   }
 }

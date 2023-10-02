@@ -1,7 +1,6 @@
 variable "prefix_name" {
   description = "le prefix du projet"
 }
-
 variable "public_ip_allow" {
   description = "l'adresse ip publique qui peut accéder à l'instance ec2"
 }

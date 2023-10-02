@@ -1,4 +1,4 @@
-resource "aws_instance" "odoo_postgres_ec2" {
+resource "aws_instance" "staging_ec2" {
   ami                         = var.ami
   instance_type               = var.instance_type
   key_name                    = var.key_name
@@ -26,6 +26,6 @@ resource "aws_instance" "odoo_postgres_ec2" {
 }
 
   tags = {
-    Name        = "${var.prefix_name}-odoo_postgres-ec2"
+    Name        = "${var.prefix_name}-ec2-staging"
   }
 }

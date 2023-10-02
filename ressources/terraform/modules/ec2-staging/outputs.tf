@@ -1,3 +1,3 @@
-output "odoo_postgres_ec2" {
-    value = aws_instance.odoo_postgres_ec2.id
+output "staging_ec2" {
+    value = aws_instance.staging_ec2.id
 }

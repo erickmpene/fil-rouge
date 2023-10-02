@@ -1,19 +1,19 @@
-resource "aws_eip" "ic_webapp_pgadmin_eip" {
-  instance = var.ec2_instance_ic-webapp_pgadmin
+resource "aws_eip" "prod_eip" {
+  instance = var.ec2_instance_prod
   provisioner "local-exec" {
-    command = "echo ${aws_eip.ic_webapp_pgadmin_eip.public_ip} > ./ip_address/ic_webapp_pgadmin_eip.txt"
+    command = "echo ${aws_eip.prod_eip.public_ip} > ./ip_address/prod_eip.txt"
   }
   tags = {
-    Name = "${var.prefix_name}-eip-ic_webapp_pgadmin"
+    Name = "${var.prefix_name}-eip-prod"
   }
 }
 
-resource "aws_eip" "odoo_postgres_eip" {
-  instance = var.ec2_instance_odoo_postgres_ec2
+resource "aws_eip" "staging_eip" {
+  instance = var.ec2_instance_staging
   provisioner "local-exec" {
-    command = "echo ${aws_eip.odoo_postgres_eip.public_ip} > ./ip_address/odoo_postgres_eip.txt"
+    command = "echo ${aws_eip.staging_eip.public_ip} > ./ip_address/staging_eip.txt"
   }
   tags = {
-    Name = "${var.prefix_name}-eip-odoo_postgres_eip"
+    Name = "${var.prefix_name}-eip-staging"
   }
 }

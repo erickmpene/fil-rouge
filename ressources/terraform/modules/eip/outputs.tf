@@ -1,3 +1,7 @@
-output "eip_ic_webapp_pgadmin_ec2" {
-    value = aws_eip.ic_webapp_pgadmin_eip.id
+output "eip_prod_ec2" {
+    value = aws_eip.prod_eip.id
+}
+
+output "eip_staging_ec2" {
+    value = aws_eip.staging_eip.id
 }

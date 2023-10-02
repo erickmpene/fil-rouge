@@ -2,8 +2,8 @@ provider "aws" {
   region = "eu-west-3"
 }
 
-module "ec2-web" {
-  source                        = "./modules/ec2-web"
+module "ec2-prod" {
+  source                        = "./modules/ec2-prod"
   prefix_name                   = var.prefix_name
   vpc_id                        = module.vpc.vpc_id
   ami                           = var.ami
@@ -11,11 +11,11 @@ module "ec2-web" {
   key_name                      = var.key_name
   subnet_id                     = module.vpc.public_subnets
   associate_public_ip_address   = var.associate_public_ip_address
-  vpc_security_group_ids        = ["${module.sg.sg_allow_http_ic_group}", "${module.sg.sg_allow_http_pgadmin}", "${module.sg.sg_allow_ssh}"]
+  vpc_security_group_ids        = ["${module.sg.sg_allow_http_ic_group}", "${module.sg.sg_allow_http_pgadmin}", "${module.sg.sg_allow_ssh}", "${module.sg.sg_allow_http_postgres}", "${module.sg.sg_allow_http_odoo}"]
 
 }
-module "ec2-odoo" {
-  source                        = "./modules/ec2-odoo"
+module "ec2-staging" {
+  source                        = "./modules/ec2-staging"
   prefix_name                   = var.prefix_name
   vpc_id                        = module.vpc.vpc_id
   ami                           = var.ami
@@ -23,7 +23,7 @@ module "ec2-odoo" {
   key_name                      = var.key_name
   subnet_id                     = module.vpc.public_subnets
   associate_public_ip_address   = var.associate_public_ip_address
-  vpc_security_group_ids        = ["${module.sg.sg_allow_http_postgres}", "${module.sg.sg_allow_http_odoo}", "${module.sg.sg_allow_ssh}"]
+  vpc_security_group_ids        = ["${module.sg.sg_allow_http_ic_group}", "${module.sg.sg_allow_http_pgadmin}", "${module.sg.sg_allow_ssh}", "${module.sg.sg_allow_http_postgres}", "${module.sg.sg_allow_http_odoo}"]
 
 }
 module "vpc" {
@@ -33,16 +33,13 @@ module "vpc" {
   public_subnets  = var.public_subnets
   private_subnets = var.private_subnets
   az-a            = var.az-a
-
 }
 
 module "eip" {
   source       = "./modules/eip"
-  ec2_instance_ic-webapp_pgadmin = module.ec2-web.ic-webapp_pgadmin_ec2
-  ec2_instance_odoo_postgres_ec2 = module.ec2-odoo.odoo_postgres_ec2
+  ec2_instance_prod = module.ec2-prod.prod_ec2
+  ec2_instance_staging = module.ec2-staging.staging_ec2
   prefix_name  = var.prefix_name
-
-
 }
 
 module "sg" {
