@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: odoo-deployment
+  namespace: icgroup
+  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: odoo
+      env: prod
+  template:
+    metadata:
+      labels:
+        app: odoo
+        env: prod
+    spec:
+      containers:
+        - name: odoo
+          image: odoo:16.0
+          resources:
+            limits:
+              memory: "700Mi"
+              cpu: "500m"
+          env:
+            - name: HOST
+              valueFrom: 
+                secretKeyRef:
+                  name: odoo-secret
+                  key: HOST 
+            - name: PORT
+              valueFrom: 
+                secretKeyRef:
+                  name: odoo-secret
+                  key: PORT 
+            - name: USER
+              valueFrom: 
+                secretKeyRef:
+                  name: odoo-secret
+                  key: USER
+            - name: PASSWORD
+              valueFrom: 
+                secretKeyRef:
+                  name: odoo-secret
+                  key: PASSWORD 
+          ports:
+            - containerPort: 8069
+          volumeMounts:
+            - name: odoo-data-data
+              mountPath: /var/lib/odoo
+            - name: odoo-data-config
+              mountPath: /etc/odoo
+            - name: data-odoo-addons
+              mountPath: /mnt/extra-addons
+      volumes: 
+        - name: odoo-data-data
+          persistentVolumeClaim: 
+            claimName: pvc-odoo-data-data
+        - name: odoo-data-config
+          persistentVolumeClaim: 
+            claimName: pvc-odoo-data-config
+        - name: data-odoo-addons
+          persistentVolumeClaim: 
+            claimName: pvc-odoo-data-addons
