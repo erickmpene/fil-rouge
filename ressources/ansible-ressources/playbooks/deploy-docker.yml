@@ -1,0 +1,5 @@
+---
+- hosts: prod:staging
+  become: true
+  roles:
+    - { role: install-docker}
