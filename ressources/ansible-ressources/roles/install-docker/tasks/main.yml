@@ -5,13 +5,10 @@
 #     state: latest
 
 - name: Install prerequisites
-  yum:
-    name: "{{ item }}"
+  apt:
+    update_cache: yes
+    name: ['nano', 'tree', 'python3-pip']
     state: present
-  with_items:
-    - yum-utils
-    - device-mapper-persistent-data
-    - python3-pip
   when: ansible_distribution == "Ubuntu"
 
 # - name: Install pre-requisite packages
@@ -24,18 +21,18 @@
 #     - lvm2
 #     - python3
   
-# - name: download pip script
-#   get_url:
-#     url: https://bootstrap.pypa.io/pip/3.6/get-pip.py
-#     dest: /tmp/get-pip.py
-# - name: install python-pip
-#   command: python3 /tmp/get-pip.py
-#   ignore_errors: yes
+- name: download pip script
+  get_url:
+    url: https://bootstrap.pypa.io/pip/3.6/get-pip.py
+    dest: /tmp/get-pip.py
+- name: install python-pip
+  command: python3 /tmp/get-pip.py
+  ignore_errors: yes
 
-# - name: Install docker python
-#   pip:
-#     name: docker-py
-#     executable: /usr/local/bin/pip3
+- name: Install docker python
+  pip:
+    name: docker-py
+    executable: /usr/local/bin/pip3
 
 
 
