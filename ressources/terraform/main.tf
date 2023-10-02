@@ -11,7 +11,7 @@ module "ec2-prod" {
   key_name                      = var.key_name
   subnet_id                     = module.vpc.public_subnets
   associate_public_ip_address   = var.associate_public_ip_address
-  vpc_security_group_ids        = ["${module.sg.sg_allow_http_ic_group}", "${module.sg.sg_allow_http_pgadmin}", "${module.sg.sg_allow_ssh}", "${module.sg.sg_allow_http_postgres}", "${module.sg.sg_allow_http_odoo}"]
+  vpc_security_group_ids        = ["${module.sg.sg_allow_ping}", "${module.sg.sg_allow_http_pgadmin}", "${module.sg.sg_allow_ssh}", "${module.sg.sg_allow_http_postgres}", "${module.sg.sg_allow_http_odoo}"]
 
 }
 module "ec2-staging" {
@@ -23,7 +23,7 @@ module "ec2-staging" {
   key_name                      = var.key_name
   subnet_id                     = module.vpc.public_subnets
   associate_public_ip_address   = var.associate_public_ip_address
-  vpc_security_group_ids        = ["${module.sg.sg_allow_http_ic_group}", "${module.sg.sg_allow_http_pgadmin}", "${module.sg.sg_allow_ssh}", "${module.sg.sg_allow_http_postgres}", "${module.sg.sg_allow_http_odoo}"]
+  vpc_security_group_ids        = ["${module.sg.sg_allow_ping}", "${module.sg.sg_allow_http_pgadmin}", "${module.sg.sg_allow_ssh}", "${module.sg.sg_allow_http_postgres}", "${module.sg.sg_allow_http_odoo}"]
 
 }
 module "vpc" {

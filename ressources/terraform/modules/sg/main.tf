@@ -110,3 +110,26 @@ resource "aws_security_group" "allow_ssh" {
   }
 
 }
+
+resource "aws_security_group" "allow_ping" {
+  description = "security group allow ping"
+  name        = "${var.prefix_name}-allow_ping"
+  vpc_id      = var.vpc_id
+  ingress {
+    from_port   = 8
+    to_port     = 8
+    protocol    = "icmp"
+    cidr_blocks = ["82.65.209.216/32"]
+  }
+
+    egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = [var.egress_all_ip]
+  }
+  tags = {
+    Name        = "${var.prefix_name}-allow-ping-ec2"
+  }
+
+}

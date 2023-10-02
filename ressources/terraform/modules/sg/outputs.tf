@@ -15,3 +15,7 @@ output "sg_allow_http_postgres" {
 output "sg_allow_ssh" {
     value = aws_security_group.allow_ssh.id
 }
+
+output "sg_allow_ping" {
+    value = aws_security_group.allow_ping.id
+}
