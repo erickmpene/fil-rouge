@@ -14,8 +14,8 @@ resource "aws_instance" "staging_ec2" {
       "sh get-docker.sh",
       "sudo usermod -aG docker ubuntu", 
       "sudo systemctl enable docker",
-      "sudo systemctl start docker",
-      "sudo init 6"
+      "sudo systemctl start docker"
+
   ]
   connection {
       type = "ssh"
