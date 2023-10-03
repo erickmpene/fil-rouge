@@ -1,2 +1,2 @@
-ansible_host: 15.236.6.138
-ansible_ssh_private_key_file: "/home/cool/key/bootcamp.pem"
+ansible_host: 13.36.1.73
+

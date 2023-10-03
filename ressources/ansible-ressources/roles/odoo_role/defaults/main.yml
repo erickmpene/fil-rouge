@@ -2,10 +2,13 @@
 # defaults file for odoo_role
 odoo_network: ic_network_odoo
 odoo_web_data_volume: odoo-web-data
-pgdata_volume: pgdata
-odoo_config_folder: /data_docker/config
-odoo_addons_folder: /data_docker/addons
-postgres_service_name: postgres
+pgdata_volume: odoo-db-data
+odoo_config_folder: /var/odoo/config
+odoo_addons_folder: /var/odoo/addons
+postgres_service_name: db
 postgres_container_name: postgres
-odoo_service_name: odoo
+odoo_service_name: web
 odoo_container_name: odoo
+odoo_port_exposed: 30600
+odoo_image_version: 16.0
+
